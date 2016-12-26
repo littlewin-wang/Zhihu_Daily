@@ -10,33 +10,33 @@ Vue.http.options.crossOrigin = true
 
 export default {
   NewsResource () {
-    return Vue.resource(API_ROOT.concat(API.news))
+    return Vue.resource(API_ROOT.concat(API.news)).get()
   },
-  NewsIdResource () {
-    return Vue.resource(API_ROOT.concat(API.newsById))
+  NewsIdResource (id) {
+    return Vue.resource(API_ROOT.concat(API.newsById)).get({id: id})
   },
-  NewsDateResource () {
-    return Vue.resource(API_ROOT.concat(API.newsByDate))
+  NewsDateResource (date) {
+    return Vue.resource(API_ROOT.concat(API.newsByDate)).get({date: date})
   },
-  NewsInfoResource () {
-    return Vue.resource(API_ROOT.concat(API.newsInfo))
+  NewsInfoResource (id) {
+    return Vue.resource(API_ROOT.concat(API.newsInfo)).get({id: id})
   },
   TopicsResource () {
-    return Vue.resource(API_ROOT.concat(API.topics))
+    return Vue.resource(API_ROOT.concat(API.topics)).get()
   },
-  TopicIdResource () {
-    return Vue.resource(API_ROOT.concat(API.topicById))
+  TopicIdResource (id) {
+    return Vue.resource(API_ROOT.concat(API.topicById)).get({id: id})
   },
   SectionsResource () {
-    return Vue.resource(API_ROOT.concat(API.sections))
+    return Vue.resource(API_ROOT.concat(API.sections)).get()
   },
-  SectionIdResource () {
-    return Vue.resource(API_ROOT.concat(API.sectionById))
+  SectionIdResource (id) {
+    return Vue.resource(API_ROOT.concat(API.sectionById)).get({id: id})
   },
-  LongCommentsResource () {
-    return Vue.resource(API_ROOT.concat(API.longComments))
+  LongCommentsResource (id) {
+    return Vue.resource(API_ROOT.concat(API.longComments)).get({id: id})
   },
-  ShortCommentsResource () {
-    return Vue.resource(API_ROOT.concat(API.shortComments))
+  ShortCommentsResource (id) {
+    return Vue.resource(API_ROOT.concat(API.shortComments)).get({id: id})
   }
 }

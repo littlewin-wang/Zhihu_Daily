@@ -4,9 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import API from './api/index'
 
-API.NewsResource().get().then(res => {
-  if (res.ok) {
-    console.log(res.data)
+API.ShortCommentsResource(9098005).then((response) => {
+  if (response.ok) {
+    console.log(response.data)
   }
 })
 
