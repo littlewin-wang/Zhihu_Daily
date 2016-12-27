@@ -10,6 +10,6 @@
   }
 </script>
 
-<style lang="css" rel="stylesheet">
+<style lang="stylus" rel="stylesheet/stylus">
 
 </style>

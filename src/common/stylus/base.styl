@@ -1,0 +1,88 @@
+color-bg = #d3d3d3
+color-shadow = #5d656c
+color-blue = #008BED
+color-gray = #7f8c8d
+color-light = #F9F9F9
+
+html
+  font-size: 62.5%
+
+body
+  background: color-bg
+  transition: all 1s
+  font-size: 1.4rem
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif
+
+.app
+  min-height: 100%
+  max-width: 640px
+  margin: 0 auto
+  padding-bottom: 10px
+  background-color: #fff
+  box-shadow: 0 0 2.5em color-shadow
+  position: relative
+
+  .head
+    height: 80px
+    line-height: 80px
+    padding: 0 10px
+    position: relative
+
+    h1
+      color: color-blue
+      font-size: 2.5rem
+
+      a
+        cursor: pointer
+
+      em
+        display: inline-block
+        position: relative
+        left: 15px
+        width: 30px
+        height: 30px
+        border-radius: 50%
+        border: 5px solid color-blue
+        border-right: 5px solid transparent
+        transform: rotate(30deg)
+
+      span
+        font-size: 1.6rem
+        float: right
+        cursor: pointer
+
+        &:nth-of-type(1)
+          margin-left: 10px
+
+
+  .news
+    h3
+      text-align: center
+      font-size: 1.8rem
+      color: color-gray
+
+    .new
+      margin: 20px
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.25)
+      cursor: pointer
+      position: relative
+
+      img
+        max-height: 100px
+        max-width: 120px
+
+      p
+        padding-left: 20px
+        display: inline-block
+        vertical-align: top
+        font-size: 1.6rem
+        width: 400px
+
+      em
+        position: absolute
+        right: 10px
+        bottom: 10px
+
+  .detail
+    .postimage
+      width: 100%

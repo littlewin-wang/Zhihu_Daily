@@ -7,10 +7,17 @@ import App from './App'
 import API from './api/index'
 import Router from './router/router'
 
+import 'common/stylus/base.styl'
+import 'common/stylus/reset.styl'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: Router.routes
+})
+// To next hook until all done
+router.beforeEach((to, from, next) => {
+  next()
 })
 
 API.ShortCommentsResource(9098005).then((response) => {
