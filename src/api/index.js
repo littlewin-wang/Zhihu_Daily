@@ -7,7 +7,14 @@ const API_ROOT = '/api'
 Vue.use(VueResource)
 
 Vue.http.options.crossOrigin = true
+Vue.http.interceptors.push((response, next) => {
+  // Add interceptor before request
+  next((response) => {
+    // Add interceptor after request
+  })
+})
 
+// export API interface
 export default {
   NewsResource () {
     return Vue.resource(API_ROOT.concat(API.news)).get()

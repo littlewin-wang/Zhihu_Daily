@@ -22,6 +22,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      // 用proxyTable做跨域请求防止浏览器跨域失败
       '/api': {
         target: 'http://news-at.zhihu.com',
         changeOrigin: true,
