@@ -5,8 +5,17 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
+  import { mapActions } from 'vuex'
 
+  export default {
+    mounted () {
+      this.$nextTick(() => {
+        this.addIndex()
+      })
+    },
+    methods: {
+      ...mapActions(['addIndex'])
+    }
   }
 </script>
 

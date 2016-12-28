@@ -4,8 +4,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import App from './App'
-import API from './api/index'
 import Router from './router/router'
+import store from './vuex/store'
 
 import 'common/stylus/base.styl'
 import 'common/stylus/reset.styl'
@@ -20,15 +20,16 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-API.ShortCommentsResource(9098005).then((response) => {
-  if (response.ok) {
-    console.log(response.data)
-  }
-})
+// API.SectionsResource().then((response) => {
+//   if (response.ok) {
+//     console.log(response.data)
+//   }
+// })
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   ...App
 })

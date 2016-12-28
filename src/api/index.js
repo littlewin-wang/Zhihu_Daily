@@ -31,14 +31,14 @@ export default {
   TopicsResource () {
     return Vue.resource(API_ROOT.concat(API.topics)).get()
   },
-  TopicIdResource (id) {
-    return Vue.resource(API_ROOT.concat(API.topicById)).get({id: id})
+  TopicIdResource (topicid) {
+    return Vue.resource(API_ROOT.concat(API.topicById)).get({topicid: topicid})
   },
   SectionsResource () {
     return Vue.resource(API_ROOT.concat(API.sections)).get()
   },
-  SectionIdResource (id) {
-    return Vue.resource(API_ROOT.concat(API.sectionById)).get({id: id})
+  SectionIdResource (sectionid) {
+    return Vue.resource(API_ROOT.concat(API.sectionById)).get({sectionid: sectionid})
   },
   LongCommentsResource (id) {
     return Vue.resource(API_ROOT.concat(API.longComments)).get({id: id})
