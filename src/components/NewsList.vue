@@ -10,11 +10,11 @@
   export default {
     mounted () {
       this.$nextTick(() => {
-        this.addIndex()
+        this.getPost(8387524)
       })
     },
     methods: {
-      ...mapActions(['addIndex'])
+      ...mapActions(['getPost'])
     }
   }
 </script>
