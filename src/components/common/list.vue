@@ -14,12 +14,8 @@
 
   export default {
     props: {
-      items: {
-        type: Array
-      },
-      type: {
-        type: String
-      }
+      items: Array,
+      type: String
     },
     methods: {
       imgProxy

@@ -5,7 +5,7 @@
     </h1>
     <span @click="type = type === 'topics' ? '' : 'topics'">主题日报</span>
     <span @click="type = type === 'sections' ? '' : 'sections'">专栏总览</span>
-    <list :items="items" :type="type" :v-show="type"></list>
+    <list :items="items" :type="type" v-show="type"></list>
   </div>
 </template>
 

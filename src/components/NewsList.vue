@@ -1,10 +1,13 @@
 <template>
-  <div>
-    这是新闻列表区域
+  <div class="newslist">
+    <div class="news">
+      <slider :list="sliderList"></slider>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import slider from './common/slider'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
@@ -22,10 +25,26 @@
       })
     },
     computed: {
-      ...mapGetters(['news', 'topics', 'sections'])
+      ...mapGetters(['news', 'topics', 'sections']),
+      sliderList () {
+        let arr = []
+        if (this.news.length && this.news[0].top_stories) {
+          this.news[0].top_stories.forEach(item => {
+            arr.push({
+              image: item.image,
+              title: item.title,
+              url: '/new/' + item.id
+            })
+          })
+        }
+        return arr
+      }
     },
     methods: {
       ...mapActions(['getNews', 'getTopics', 'getSections'])
+    },
+    components: {
+      slider
     }
   }
 </script>
