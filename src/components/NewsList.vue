@@ -5,16 +5,27 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     mounted () {
       this.$nextTick(() => {
-        this.getPost(8387524)
+        this.getNews()
+
+        if (!this.topics.length) {
+          this.getTopics()
+        }
+
+        if (!this.sections.length) {
+          this.getSections()
+        }
       })
     },
+    computed: {
+      ...mapGetters(['news', 'topics', 'sections'])
+    },
     methods: {
-      ...mapActions(['getPost'])
+      ...mapActions(['getNews', 'getTopics', 'getSections'])
     }
   }
 </script>

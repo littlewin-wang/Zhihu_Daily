@@ -1,12 +1,16 @@
 <template>
   <div class="app">
+    <v-header></v-header>
     <router-view keep-alive></router-view>
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
+  import vHeader from 'components/common/header'
   export default {
-    name: 'app'
+    components: {
+      vHeader
+    }
   }
 </script>
 

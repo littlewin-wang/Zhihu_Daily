@@ -29,7 +29,7 @@ export const UPDATE_NEWS = (state, news) => {
   }
 
   state.news.sort((a, b) => {
-    return a.date > b.date
+    return a.date < b.date
   })
 }
 
