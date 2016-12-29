@@ -1,13 +1,17 @@
 <template>
   <div class="newslist">
-    <div class="news">
+    <div class="newswrapper">
+      <!--顶部轮播图-->
       <slider :list="sliderList"></slider>
+      <!--新闻列表-->
+      <newsitem v-for="news in news[0].stories" :item="news"></newsitem>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import slider from './common/slider'
+  import newsitem from './common/newsitem'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
@@ -33,7 +37,7 @@
             arr.push({
               image: item.image,
               title: item.title,
-              url: '/new/' + item.id
+              url: '/news/' + item.id
             })
           })
         }
@@ -44,7 +48,8 @@
       ...mapActions(['getNews', 'getTopics', 'getSections'])
     },
     components: {
-      slider
+      slider,
+      newsitem
     }
   }
 </script>

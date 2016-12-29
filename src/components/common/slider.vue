@@ -26,7 +26,7 @@
         new Swiper('.swiper-container', {
           direction: 'horizontal',
           loop: true,
-          autoplay: 2000,
+          autoplay: 2500,
           pagination: '.swiper-pagination',
           paginationClickable: true,
           autoplayDisableOnInteraction: false,
