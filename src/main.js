@@ -8,7 +8,6 @@ import Router from './router/router'
 import store from './vuex/store'
 
 import 'common/stylus/base.styl'
-import 'common/stylus/reset.styl'
 
 Vue.use(VueRouter)
 

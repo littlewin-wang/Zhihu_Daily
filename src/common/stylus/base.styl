@@ -1,9 +1,11 @@
+ // Defined varable
 color-bg = #d3d3d3
 color-shadow = #5d656c
 color-blue = #008BED
 color-gray = #7f8c8d
 color-light = #F9F9F9
 
+// Base style
 html
   font-size: 62.5%
 
@@ -22,12 +24,23 @@ body
   box-shadow: 0 0 2.5em color-shadow
   position: relative
 
-  //.news
-  //  h3
-  //    text-align: center
-  //    font-size: 1.8rem
-  //    color: color-gray
-  //
-  //.detail
-  //  .postimage
-  //    width: 100%
+// Reset style
+li
+  list-style: none
+
+a
+  text-decoration: none
+  color: inherit
+  &:link
+    color: inherit
+  &:visited
+    color: inherit
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+
+p
+  margin: 0
+
+hr
+  margin: 0

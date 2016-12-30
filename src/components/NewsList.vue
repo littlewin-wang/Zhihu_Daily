@@ -1,16 +1,18 @@
 <template>
   <div class="newslist">
-    <div class="newswrapper">
-      <!--顶部轮播图-->
-      <slider :list="sliderList"></slider>
+    <div class="newswrapper" v-for="(item, index) in newsList">
+      <!--顶部轮播图, latest news打开-->
+      <slider v-if="!index" :list="sliderList"></slider>
+      <h3 v-if="index">{{ item.date }}</h3>
       <!--新闻列表-->
-      <newsitem v-for="news in news[0].stories" :item="news"></newsitem>
+      <newsitem v-for="news in item.stories" :item="news"></newsitem>
     </div>
-    <more :loading="true"></more>
+    <more :show="news.length" :loading="loading" :addFun="getLastNews"></more>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import API from '../api/index'
   import slider from './common/slider'
   import newsitem from './common/newsitem'
   import more from './common/more'
@@ -30,8 +32,13 @@
         }
       })
     },
+    data () {
+      return {
+        loading: false
+      }
+    },
     computed: {
-      ...mapGetters(['news', 'topics', 'sections']),
+      ...mapGetters(['news', 'topics', 'sections', 'index']),
       sliderList () {
         let arr = []
         if (this.news.length && this.news[0].top_stories) {
@@ -44,10 +51,37 @@
           })
         }
         return arr
+      },
+      newsList () {
+        let arr = []
+        if (this.news.length) {
+          arr = this.news.filter((x, index) => {
+            return index <= this.index
+          })
+        }
+        return arr
       }
     },
     methods: {
-      ...mapActions(['getNews', 'getTopics', 'getSections'])
+      ...mapActions(['getNews', 'getTopics', 'getSections', 'addIndex', 'addNews']),
+      getLastNews () {
+        this.loading = true
+        this.addIndex()
+        if (this.news.length - 1 > this.index) {
+          this.$nextTick(() => {
+            this.loading = false
+          })
+          return false
+        }
+
+        let date = this.news[this.news.length - 1].date
+        API.NewsDateResource(date).then(res => {
+          this.addNews(res.data)
+          this.$nextTick(() => {
+            this.loading = false
+          })
+        })
+      }
     },
     components: {
       slider,
@@ -58,5 +92,10 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .newswrapper
+    h3
+      padding-top: 0.3rem
+      text-align: center
+      font-size: 2.2rem
+      color: #7f8c8d
 </style>
