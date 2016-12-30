@@ -6,12 +6,14 @@
       <!--新闻列表-->
       <newsitem v-for="news in news[0].stories" :item="news"></newsitem>
     </div>
+    <more :loading="true"></more>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import slider from './common/slider'
   import newsitem from './common/newsitem'
+  import more from './common/more'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
@@ -49,7 +51,8 @@
     },
     components: {
       slider,
-      newsitem
+      newsitem,
+      more
     }
   }
 </script>
