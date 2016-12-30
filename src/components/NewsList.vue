@@ -67,7 +67,7 @@
       getLastNews () {
         this.loading = true
         this.addIndex()
-        if (this.news.length - 1 > this.index) {
+        if (this.news.length - 1 >= this.index) {
           this.$nextTick(() => {
             this.loading = false
           })

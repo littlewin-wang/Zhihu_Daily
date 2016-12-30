@@ -1,5 +1,8 @@
 export const ADD_NEWS = (state, news) => {
   state.news.push(news)
+  state.news.sort((a, b) => {
+    return b.date - a.date
+  })
 }
 
 export const UPDATE_NEWS = (state, news) => {
@@ -29,7 +32,7 @@ export const UPDATE_NEWS = (state, news) => {
   }
 
   state.news.sort((a, b) => {
-    return a.date < b.date
+    return b.date - a.date
   })
 }
 
