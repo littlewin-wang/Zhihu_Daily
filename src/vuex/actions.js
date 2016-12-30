@@ -35,7 +35,7 @@ export const getSections = ({ commit }) => {
 
 // 获取文章
 export const getPost = ({ commit, state }, id, fun) => {
-  let post = state.posts.find(p => p.id === id)
+  let post = state.posts.find(p => p.id.toString() === id)
 
   if (!post) {
     API.NewsIdResource(id).then(res => {
