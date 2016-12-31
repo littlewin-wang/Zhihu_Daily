@@ -1,12 +1,35 @@
 <template>
   <div>
-    这是区块列表区域
+    <div class="section" v-if="sectionList.stories">
+      <newsitem v-for="news in sectionList.stories" track-by="id" :item="news"></newsitem>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import newsitem from './common/newsitem'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
-
+    components: {
+      newsitem
+    },
+    computed: {
+      ...mapGetters(['sectionList']),
+      id () {
+        return this.$route.params.id
+      }
+    },
+    methods: {
+      ...mapActions(['getSectionList'])
+    },
+    mounted () {
+      this.getSectionList(this.$route.params.id)
+    },
+    watch: {
+      id () {
+        this.getSectionList(this.$route.params.id)
+      }
+    }
   }
 </script>
 

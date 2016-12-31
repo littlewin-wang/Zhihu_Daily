@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <ul>
-      <li v-for="item in items" :title="item.name">
+      <li v-for="item in items" :title="item.name" @click="link(item.id)">
         <img :src="imgProxy(item.thumbnail)" width="40" height="40">
         {{ item.name }}
       </li>
@@ -18,7 +18,11 @@
       type: String
     },
     methods: {
-      imgProxy
+      imgProxy,
+      link (id) {
+        this.$router.push(`/${this.type}/${id}`)
+        this.$parent.type = ''
+      }
     }
   }
 </script>

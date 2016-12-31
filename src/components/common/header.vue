@@ -3,8 +3,8 @@
     <h1 class="logo">
       <router-link tag="a" to="/" class="link-logo">知乎日报</router-link>
     </h1>
-    <span @click="type = type === 'topics' ? '' : 'topics'">主题日报</span>
-    <span @click="type = type === 'sections' ? '' : 'sections'">专栏总览</span>
+    <span @click="type = type === 'topic' ? '' : 'topic'">主题日报</span>
+    <span @click="type = type === 'section' ? '' : 'section'">专栏总览</span>
     <list :items="items" :type="type" v-show="type"></list>
   </div>
 </template>
@@ -22,7 +22,7 @@
     computed: {
       ...mapGetters(['topics', 'sections']),
       items () {
-        return this.type ? (this.type === 'topics' ? this.topics : this.sections) : []
+        return this.type ? (this.type === 'topic' ? this.topics : this.sections) : []
       }
     },
     components: {
