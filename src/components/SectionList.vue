@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sectionlist">
     <div class="section" v-if="sectionList.stories">
       <newsitem v-for="news in sectionList.stories" track-by="id" :item="news"></newsitem>
     </div>

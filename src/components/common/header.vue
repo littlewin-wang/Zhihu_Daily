@@ -53,5 +53,5 @@
       cursor: pointer
       color: #008bed
       &:nth-of-type(1)
-        margin-left: 10px
+        margin-left: 20px
 </style>

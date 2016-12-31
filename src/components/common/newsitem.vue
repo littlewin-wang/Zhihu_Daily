@@ -31,11 +31,12 @@
       max-height: 100px
       max-width: 120px
     p
-      padding-left: 20px
       display: inline-block
+      width: 400px
+      margin: 20px
+      padding-left: 20px
       vertical-align: middle
       font-size: 1.6rem
-      width: 400px
     em
       position: absolute
       right: 10px
