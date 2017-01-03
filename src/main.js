@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { sync } from 'vuex-router-sync'
+import VueLazyLoad from 'vue-lazyload'
 
 import App from './App'
 import Router from './router/router'
@@ -20,13 +21,13 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-// API.SectionsResource().then((response) => {
-//   if (response.ok) {
-//     console.log(response.data)
-//   }
-// })
-
 sync(store, router)
+
+Vue.use(VueLazyLoad, {
+  error: 'static/error.jpg',
+  loading: 'static/loading.gif',
+  attempt: 1
+})
 
 /* eslint-disable no-new */
 new Vue({

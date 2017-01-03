@@ -3,7 +3,7 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="item in list">
         <router-link :to="item.url">
-          <img :src="imgProxy(item.image)">
+          <img v-lazy="imgProxy(item.image)">
           <p>{{ item.title }}</p>
         </router-link>
       </div>

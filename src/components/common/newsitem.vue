@@ -1,7 +1,7 @@
 <template>
   <router-link :to="'/news/' + item.id">
     <div class="news">
-      <img v-if="item.images" :src="imgProxy(item.images[0])">
+      <img v-if="item.images" v-lazy="imgProxy(item.images[0])">
       <p>{{ item.title }}</p>
       <em v-if="item.multipic">多图</em>
     </div>
