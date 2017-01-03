@@ -59,7 +59,3 @@ export const ADD_SECTIONLIST = (state, section) => {
 export const ADD_INDEX = (state) => {
   state.index++
 }
-
-export const UPDATE_LOADING = (state, loading) => {
-  state.loading = loading
-}

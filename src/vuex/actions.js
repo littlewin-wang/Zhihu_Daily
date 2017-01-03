@@ -79,11 +79,6 @@ export const getSectionList = ({ commit }, id) => {
   })
 }
 
-// 数据过渡状态
-export const updateLoading = ({ commit }, lodaing) => {
-  commit('UPDATE_LOADING', lodaing)
-}
-
 export const addIndex = ({ commit }) => {
   commit('ADD_INDEX')
 }

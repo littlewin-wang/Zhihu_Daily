@@ -4,5 +4,4 @@ export const sections = state => state.sections
 export const posts = state => state.posts
 export const topicPosts = state => state.topicPosts
 export const sectionList = state => state.sectionList
-export const loading = state => state.loading
 export const index = state => state.index

@@ -21,7 +21,6 @@ export default new Vuex.Store({
     posts: JSON.parse(window.localStorage.getItem(STORAGE_POSTS_KEY) || '[]'),
     topicPosts: {},
     sectionList: {},
-    loading: false,
     index: 0
   },
   getters,
