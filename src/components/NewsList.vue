@@ -30,6 +30,8 @@
         if (!this.sections.length) {
           this.getSections()
         }
+
+        this.$emit('loadingDone')
       })
     },
     data () {

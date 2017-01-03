@@ -48,6 +48,14 @@
   .swiper-slide
     position: relative
     cursor: pointer
+    img[lazy=loading]
+      position: absolute
+      width: 440px
+      height: 290px
+      left: 50%
+      top: 50%
+      margin-left: -220px
+      margin-top: -145px
     p
       width: 70%
       word-wrap: break-word
