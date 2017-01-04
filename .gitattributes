@@ -1,0 +1,3 @@
+*.css linguist-language=Vue
+*.html linguist-language=Vue
+*.js linguist-language=Vue
