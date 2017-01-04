@@ -20,6 +20,7 @@
 
   export default {
     mounted () {
+      this.$emit('loadingStart')
       this.$nextTick(() => {
         this.getNews()
 

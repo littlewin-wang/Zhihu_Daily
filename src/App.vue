@@ -2,7 +2,7 @@
   <div class="app">
     <v-header></v-header>
     <loading :mask="false" v-if="isShow"></loading>
-    <router-view keep-alive @loadingDone="closeLoading"></router-view>
+    <router-view keep-alive @loadingDone="closeLoading" @loadingStart="startLoading"></router-view>
     <float></float>
   </div>
 </template>
@@ -19,7 +19,12 @@
       }
     },
     methods: {
+      startLoading () {
+        console.log(1)
+        this.isShow = true
+      },
       closeLoading () {
+        console.log(0)
         this.isShow = false
       }
     },

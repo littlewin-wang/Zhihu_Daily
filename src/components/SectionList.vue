@@ -23,11 +23,15 @@
       ...mapActions(['getSectionList'])
     },
     mounted () {
+      this.$emit('loadingStart')
       this.getSectionList(this.$route.params.id)
+      this.$emit('loadingDone')
     },
     watch: {
       id () {
+        this.$emit('loadingStart')
         this.getSectionList(this.$route.params.id)
+        this.$emit('loadingDone')
       }
     }
   }

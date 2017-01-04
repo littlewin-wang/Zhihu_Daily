@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+    <span class="imgFrom">图片库: {{ post.image_source }}</span>
     <badge class="left" v-if="post.body" :popularity="post.popularity"></badge>
   </div>
 </template>
@@ -76,11 +77,13 @@
     },
     beforeRouteEnter (to, from, next) {
       next((vm) => {
+        vm.$emit('loadingStart')
         let id = vm.$route.params.id
         if (!vm.post.body) {
           vm.getPost(id)
         }
         vm.getComment()
+        vm.$emit('loadingDone')
       })
     }
   }
@@ -108,6 +111,11 @@
           .time
             font-size: 1.6rem
             margin-left: 10px
+  .imgFrom
+    position: absolute
+    top: 680px
+    right: 40px
+    color: rgba(255, 255, 255, .6)
   .left
     position: fixed
     left: 50%
