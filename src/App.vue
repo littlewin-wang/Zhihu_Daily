@@ -20,11 +20,9 @@
     },
     methods: {
       startLoading () {
-        console.log(1)
         this.isShow = true
       },
       closeLoading () {
-        console.log(0)
         this.isShow = false
       }
     },

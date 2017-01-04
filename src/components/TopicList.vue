@@ -34,13 +34,17 @@
     mounted () {
       this.$emit('loadingStart')
       this.getTopicPosts(this.$route.params.id)
-      this.$emit('loadingDone')
+          .then(() => {
+            this.$emit('loadingDone')
+          })
     },
     watch: {
       id () {
         this.$emit('loadingStart')
         this.getTopicPosts(this.$route.params.id)
-        this.$emit('loadingDone')
+            .then(() => {
+              this.$emit('loadingDone')
+            })
       }
     }
   }
