@@ -2,7 +2,7 @@ var express = require('express')
 var config = require('./config')
 var proxyMiddleware = require('http-proxy-middleware')
 
-var port = process.env.PORT || config.build.port
+var port = process.env.PORT
 var proxyTable = config.dev.proxyTable
 
 var app = express()

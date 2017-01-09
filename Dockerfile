@@ -12,7 +12,7 @@ RUN npm install
 COPY . /usr/src/app
 
 # To build the dist file
-RUN npm build
+RUN npm run build
 
 EXPOSE 80
 
