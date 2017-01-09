@@ -1,4 +1,8 @@
-# 知乎日报 By Vue2.0
+# [知乎日报](http://littlewin-vue-zhihudaily.daoapp.io)
+
+> 基于Vue和Node.js的Web单页应用
+
+> Web容器支持: [docker](https://www.docker.com/) + [Daocloud](https://www.daocloud.io/) 
 
 ## 技术栈
 - [vue 2.0](https://github.com/vuejs/vue) + [vue-router 2.0](https://github.com/vuejs/vue-router) + [vuex 2.0](https://github.com/vuejs/vuex) + [vue-resource](https://github.com/pagekit/vue-resource)
@@ -27,7 +31,11 @@ npm run build
 ```
 
 ## Tips
-
+ - [vue-cli脚手架适配](https://github.com/littlewin-wang/Zhihu_Daily/blob/master/docs/vue-cli%E9%80%82%E9%85%8D.md)
+ - [路由管理](https://github.com/littlewin-wang/Zhihu_Daily/blob/master/docs/%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86.md)
+ - [状态管理](https://github.com/littlewin-wang/Zhihu_Daily/blob/master/docs/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.md)
+ - [体验优化](https://github.com/littlewin-wang/Zhihu_Daily/blob/master/docs/%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96.md)
+ 
 ## TODO
  - [x] 数据获取
  - [x] 状态管理
@@ -42,5 +50,4 @@ npm run build
  > [vue-zhihu-daily](https://github.com/hilongjw/vue-zhihu-daily) By [hilongjw](https://github.com/hilongjw)
 
 ## License
-
  [MIT](http://opensource.org/licenses/MIT)
