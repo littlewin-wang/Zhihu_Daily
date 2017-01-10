@@ -7,6 +7,7 @@ const API_ROOT = '/api'
 Vue.use(VueResource)
 
 Vue.http.options.crossOrigin = true
+Vue.http.options.credentials = true
 Vue.http.interceptors.push((response, next) => {
   // Add interceptor before request
   next((response) => {
