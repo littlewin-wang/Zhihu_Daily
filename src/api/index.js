@@ -1,50 +1,38 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
+var axios = require('axios')
 import { API } from './api'
 
 const API_ROOT = '/api'
 
-Vue.use(VueResource)
-
-Vue.http.options.crossOrigin = true
-Vue.http.options.credentials = true
-Vue.http.interceptors.push((response, next) => {
-  // Add interceptor before request
-  next((response) => {
-    // Add interceptor after request
-  })
-})
-
 // export API interface
 export default {
   NewsResource () {
-    return Vue.resource(API_ROOT.concat(API.news)).get()
+    return axios.get(API_ROOT.concat(API.news))
   },
   NewsIdResource (id) {
-    return Vue.resource(API_ROOT.concat(API.newsById)).get({id: id})
+    return axios.get(API_ROOT.concat(API.newsById).concat(id))
   },
   NewsDateResource (date) {
-    return Vue.resource(API_ROOT.concat(API.newsByDate)).get({date: date})
+    return axios.get(API_ROOT.concat(API.newsByDate).concat(date))
   },
   NewsInfoResource (id) {
-    return Vue.resource(API_ROOT.concat(API.newsInfo)).get({id: id})
+    return axios.get(API_ROOT.concat(API.newsInfo).concat(id))
   },
   TopicsResource () {
-    return Vue.resource(API_ROOT.concat(API.topics)).get()
+    return axios.get(API_ROOT.concat(API.topics))
   },
   TopicIdResource (topicid) {
-    return Vue.resource(API_ROOT.concat(API.topicById)).get({topicid: topicid})
+    return axios.get(API_ROOT.concat(API.topicById).concat(topicid))
   },
   SectionsResource () {
-    return Vue.resource(API_ROOT.concat(API.sections)).get()
+    return axios.get(API_ROOT.concat(API.sections))
   },
   SectionIdResource (sectionid) {
-    return Vue.resource(API_ROOT.concat(API.sectionById)).get({sectionid: sectionid})
+    return axios.get(API_ROOT.concat(API.sectionById).concat(sectionid))
   },
   LongCommentsResource (id) {
-    return Vue.resource(API_ROOT.concat(API.longComments)).get({id: id})
+    return axios.get(API_ROOT.concat(API.comments).concat(id).concat('/long-comments'))
   },
   ShortCommentsResource (id) {
-    return Vue.resource(API_ROOT.concat(API.shortComments)).get({id: id})
+    return axios.get(API_ROOT.concat(API.comments).concat(id).concat('/short-comments'))
   }
 }

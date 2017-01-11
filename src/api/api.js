@@ -1,13 +1,13 @@
 export const API = {
   startImage: '/api/4/start-image/1080*1776',
   news: '/api/4/news/latest',
-  newsById: '/api/4/news{/id}',
-  newsByDate: '/api/4/news/before{/date}',
-  newsInfo: '/api/4/story-extra{/id}',
+  newsById: '/api/4/news/',
+  newsByDate: '/api/4/news/before/',
+  newsInfo: '/api/4/story-extra/',
   topics: '/api/4/themes',
-  topicById: '/api/4/theme{/topicid}',
+  topicById: '/api/4/theme/',
   sections: '/api/3/sections',
-  sectionById: '/api/3/section{/sectionid}',
-  longComments: '/api/4/story{/id}/long-comments',
-  shortComments: '/api/4/story{/id}/short-comments'
+  sectionById: '/api/3/section/',
+  comments: '/api/4/story/',
+  shortComments: '/api/4/story/{/id}/short-comments'
 }

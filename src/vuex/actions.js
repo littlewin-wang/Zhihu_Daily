@@ -6,17 +6,18 @@ export const addNews = ({ commit }, news) => {
 
 // 获取当天新闻
 export const getNews = ({ commit }) => {
-  API.NewsResource().then(res => {
-    if (res.ok) {
-      commit('UPDATE_NEWS', res.data)
-    }
-  })
+  API.NewsResource()
+    .then(res => {
+      if (res.statusText === 'OK') {
+        commit('UPDATE_NEWS', res.data)
+      }
+    })
 }
 
 // 主题日报缓存
 export const getTopics = ({ commit }) => {
   API.TopicsResource().then(res => {
-    if (res.ok) {
+    if (res.statusText === 'OK') {
       let topics = res.data
       commit('ADD_TOPICS', topics.others)
     }
@@ -26,7 +27,7 @@ export const getTopics = ({ commit }) => {
 // 栏目总览缓存
 export const getSections = ({ commit }) => {
   API.SectionsResource().then(res => {
-    if (res.ok) {
+    if (res.statusText === 'OK') {
       let sections = res.data
       commit('ADD_SECTIONS', sections.data)
     }
@@ -42,7 +43,7 @@ export const getPost = ({ commit, state }, id, fun) => {
       post = res.data
       return API.NewsInfoResource(id)
     }).then(res2 => {
-      if (res2.ok) {
+      if (res2.statusText === 'OK') {
         let info = res2.data
         // 将post info属性赋值给post
         for (let item in info) {
@@ -62,7 +63,7 @@ export const getPost = ({ commit, state }, id, fun) => {
 // 获取主题日报文章
 export const getTopicPosts = ({ commit }, id) => {
   API.TopicIdResource(id).then(res => {
-    if (res.ok) {
+    if (res.statusText === 'OK') {
       let posts = res.data
       commit('ADD_TOPICPOSTS', posts)
     }
@@ -72,7 +73,7 @@ export const getTopicPosts = ({ commit }, id) => {
 // 获取栏目文章
 export const getSectionList = ({ commit }, id) => {
   API.SectionIdResource(id).then(res => {
-    if (res.ok) {
+    if (res.statusText === 'OK') {
       let list = res.data
       commit('ADD_SECTIONLIST', list)
     }

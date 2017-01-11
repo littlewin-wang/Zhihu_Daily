@@ -63,12 +63,12 @@
         if (!this.comments.length) {
           let id = this.$route.params.id
           API.LongCommentsResource(id).then(res => {
-            if (res.ok) {
+            if (res.statusText === 'OK') {
               this.longComments = res.data.comments
             }
           })
           API.ShortCommentsResource(id).then(res => {
-            if (res.ok) {
+            if (res.statusText === 'OK') {
               this.shortComments = res.data.comments
             }
           })
