@@ -15,7 +15,6 @@
     "swiper": "^3.4.1",
     "vue": "^2.1.0",
     "vue-lazyload": "^1.0.0-rc7",
-    "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1",
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.0.2"

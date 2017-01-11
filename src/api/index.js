@@ -1,39 +1,38 @@
 var axios = require('axios')
-import { API } from './api'
 
-const API_ROOT = '/api'
+const API_ROOT = 'http://localhost:8088/'
 axios.default.withCredentials = true
 
 // export API interface
 export default {
   NewsResource () {
-    return axios.get(API_ROOT.concat(API.news))
+    return axios.get(API_ROOT.concat('news'))
   },
   NewsIdResource (id) {
-    return axios.get(API_ROOT.concat(API.newsById).concat(id))
+    return axios.get(API_ROOT.concat('newsById'), {params: {id: id}})
   },
   NewsDateResource (date) {
-    return axios.get(API_ROOT.concat(API.newsByDate).concat(date))
+    return axios.get(API_ROOT.concat('newsByDate'), {params: {date: date}})
   },
   NewsInfoResource (id) {
-    return axios.get(API_ROOT.concat(API.newsInfo).concat(id))
+    return axios.get(API_ROOT.concat('newsInfo'), {params: {id: id}})
   },
   TopicsResource () {
-    return axios.get(API_ROOT.concat(API.topics))
+    return axios.get(API_ROOT.concat('topics'))
   },
   TopicIdResource (topicid) {
-    return axios.get(API_ROOT.concat(API.topicById).concat(topicid))
+    return axios.get(API_ROOT.concat('topicById'), {params: {id: topicid}})
   },
   SectionsResource () {
-    return axios.get(API_ROOT.concat(API.sections))
+    return axios.get(API_ROOT.concat('sections'))
   },
   SectionIdResource (sectionid) {
-    return axios.get(API_ROOT.concat(API.sectionById).concat(sectionid))
+    return axios.get(API_ROOT.concat('sectionById'), {params: {id: sectionid}})
   },
   LongCommentsResource (id) {
-    return axios.get(API_ROOT.concat(API.comments).concat(id).concat('/long-comments'))
+    return axios.get(API_ROOT.concat('longComments'), {params: {id: id}})
   },
   ShortCommentsResource (id) {
-    return axios.get(API_ROOT.concat(API.comments).concat(id).concat('/short-comments'))
+    return axios.get(API_ROOT.concat('shortComments'), {params: {id: id}})
   }
 }

@@ -1,22 +1,12 @@
 var express = require('express')
 var config = require('./config')
-var proxyMiddleware = require('http-proxy-middleware')
 var cors = require('cors')
 
 var port = process.env.PORT || config.build.port
-var proxyTable = config.dev.proxyTable
 
 var app = express()
-app.use(cors())
 
-// proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  app.use(proxyMiddleware(context, options))
-})
+app.use(cors())
 
 app.use(require('connect-history-api-fallback')())
 

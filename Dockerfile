@@ -14,6 +14,8 @@ COPY . /usr/src/app
 # To build the dist file
 RUN npm run build
 
+CMD ["node", "api.server.js"]
+
 EXPOSE 80
 
 CMD ["node", "prod.server.js"]
