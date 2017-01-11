@@ -2,6 +2,7 @@ var axios = require('axios')
 import { API } from './api'
 
 const API_ROOT = '/api'
+axios.default.withCredentials = true
 
 // export API interface
 export default {
