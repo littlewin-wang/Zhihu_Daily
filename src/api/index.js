@@ -1,6 +1,6 @@
 var axios = require('axios')
 
-const API_ROOT = 'http://localhost:8088/'
+const API_ROOT = 'http://43.224.33.39:8088/'
 axios.default.withCredentials = true
 
 // export API interface
