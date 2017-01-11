@@ -12,7 +12,7 @@ export default {
     return axios.get(API_ROOT.concat('newsById'), {params: {id: id}})
   },
   NewsDateResource (date) {
-    return axios.get(API_ROOT.concat('newsByDate'), {params: {date: date}})
+    return axios.get(API_ROOT.concat('newsByDate'), {params: {time: date}})
   },
   NewsInfoResource (id) {
     return axios.get(API_ROOT.concat('newsInfo'), {params: {id: id}})

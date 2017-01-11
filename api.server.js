@@ -61,7 +61,7 @@ server.on('request', function(req, res) {
 
     case '/newsByDate':
       var query = querystring.parse(urlOption.query)
-      var time = ~~query.time + 1
+      var time = ~~query.time
       var request = http.request('http://news.at.zhihu.com/api/4/news/before/' + time.toString())
       request.on('response', function(response) {
         var c = ""
