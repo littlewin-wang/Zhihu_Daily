@@ -5,7 +5,7 @@
 > Web容器支持: [docker](https://www.docker.com/) + [Daocloud](https://www.daocloud.io/) 
 
 ## 技术栈
-- [vue 2.0](https://github.com/vuejs/vue) + [vue-router 2.0](https://github.com/vuejs/vue-router) + [vuex 2.0](https://github.com/vuejs/vuex) + [vue-resource](https://github.com/pagekit/vue-resource)
+- [vue 2.0](https://github.com/vuejs/vue) + [vue-router 2.0](https://github.com/vuejs/vue-router) + [vuex 2.0](https://github.com/vuejs/vuex) + ~~[vue-resource](https://github.com/pagekit/vue-resource)~~ + [axios](https://github.com/mzabriskie/axios)
 - [stylus](https://github.com/stylus/stylus) + [normalize.css](https://github.com/necolas/normalize.css) + ~~知乎日报原生样式（直接照搬了我会乱说o(╯□╰)o）~~
 
 ## Preview
