@@ -1,6 +1,6 @@
 var axios = require('axios')
 
-const API_ROOT = 'http://182.254.226.210:8088/'
+const API_ROOT = 'http://119.29.68.183:8088/'
 axios.default.withCredentials = true
 
 // export API interface
