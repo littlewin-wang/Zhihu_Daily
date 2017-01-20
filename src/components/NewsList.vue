@@ -13,6 +13,7 @@
 
 <script type="text/ecmascript-6">
   import API from '../api/index'
+  import { prevDate } from 'common/js/utils'
   import slider from './common/slider'
   import newsitem from './common/newsitem'
   import more from './common/more'
@@ -68,22 +69,27 @@
     methods: {
       ...mapActions(['getNews', 'getTopics', 'getSections', 'addIndex', 'addNews']),
       getLastNews () {
+        let find = false
         this.loading = true
         this.addIndex()
-        if (this.news.length - 1 >= this.index) {
-          this.$nextTick(() => {
-            this.loading = false
-          })
-          return false
-        }
-
-        let date = this.news[this.news.length - 1].date
-        API.NewsDateResource(date).then(res => {
-          this.addNews(res.data)
-          this.$nextTick(() => {
-            this.loading = false
-          })
+        this.news.forEach((item) => {
+          if (item.date === prevDate(this.news[0].date, this.index)) {
+            find = true
+            this.$nextTick(() => {
+              this.loading = false
+            })
+          }
         })
+
+        if (!find) {
+          let date = prevDate(this.news[0].date, this.index - 1)
+          API.NewsDateResource(date).then(res => {
+            this.addNews(res.data)
+            this.$nextTick(() => {
+              this.loading = false
+            })
+          })
+        }
       }
     },
     components: {
