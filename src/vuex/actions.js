@@ -6,12 +6,23 @@ export const addNews = ({ commit }, news) => {
 
 // 获取当天新闻
 export const getNews = ({ commit }) => {
-  API.NewsResource()
-    .then(res => {
-      if (res.statusText === 'OK') {
+  // use cache
+  let cacheNews = []
+
+  API.NewsResourceCache().then(data => {
+    if (data) {
+      cacheNews = data
+      commit('UPDATE_NEWS', data)
+    }
+
+    return API.NewsResource()
+  }).then(res => {
+    if (res.statusText === 'OK') {
+      if (JSON.stringify(cacheNews) !== JSON.stringify(res.data)) {
         commit('UPDATE_NEWS', res.data)
       }
-    })
+    }
+  })
 }
 
 // 主题日报缓存

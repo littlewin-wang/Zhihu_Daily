@@ -11,6 +11,13 @@ import store from './vuex/store'
 
 import 'common/stylus/base.styl'
 
+// 注册service worker，service worker脚本文件为sw.js
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(function () {
+    console.log('Service Worker 注册成功')
+  })
+}
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -24,8 +31,8 @@ router.beforeEach((to, from, next) => {
 sync(store, router)
 
 Vue.use(VueLazyLoad, {
-  error: 'static/error.jpg',
-  loading: 'static/loading.gif',
+  error: 'error.jpg',
+  loading: 'loading.gif',
   attempt: 1
 })
 

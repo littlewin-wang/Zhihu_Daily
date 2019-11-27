@@ -3,8 +3,26 @@ var axios = require('axios')
 const API_ROOT = 'http://119.29.68.183:8088/'
 axios.default.withCredentials = true
 
+const getApiDataFromCache = (url) => {
+  if ('caches' in window) {
+    /* eslint-disable */
+    return caches.match(url).then(function (cache) {
+      if (!cache) {
+        return
+      }
+      return cache.json()
+    })
+  } else {
+    return Promise.resolve()
+  }
+}
+
 // export API interface
 export default {
+  // Use cache storage
+  NewsResourceCache () {
+    return getApiDataFromCache(API_ROOT.concat('news'))
+  },
   NewsResource () {
     return axios.get(API_ROOT.concat('news'))
   },

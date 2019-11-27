@@ -14,11 +14,20 @@ export const STORAGE_SECTIONS_KEY = 'sections'
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
+  // state: {
+  //   news: JSON.parse(window.localStorage.getItem(STORAGE_NEWS_KEY) || '[]'),
+  //   topics: JSON.parse(window.localStorage.getItem(STORAGE_TOPICS_KEY) || '[]'),
+  //   sections: JSON.parse(window.localStorage.getItem(STORAGE_SECTIONS_KEY) || '[]'),
+  //   posts: JSON.parse(window.localStorage.getItem(STORAGE_POSTS_KEY) || '[]'),
+  //   topicPosts: {},
+  //   sectionList: {},
+  //   index: 0
+  // },
   state: {
-    news: JSON.parse(window.localStorage.getItem(STORAGE_NEWS_KEY) || '[]'),
-    topics: JSON.parse(window.localStorage.getItem(STORAGE_TOPICS_KEY) || '[]'),
-    sections: JSON.parse(window.localStorage.getItem(STORAGE_SECTIONS_KEY) || '[]'),
-    posts: JSON.parse(window.localStorage.getItem(STORAGE_POSTS_KEY) || '[]'),
+    news: [],
+    topics: [],
+    sections: [],
+    posts: [],
     topicPosts: {},
     sectionList: {},
     index: 0

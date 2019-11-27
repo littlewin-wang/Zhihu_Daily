@@ -20,7 +20,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 8080,
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: '',
     assetsPublicPath: '/',
     proxyTable: {
       // 用proxyTable做跨域请求防止浏览器跨域失败
