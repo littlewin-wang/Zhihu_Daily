@@ -14,6 +14,14 @@ var port = process.env.PORT || config.dev.port
 // https://github.com/chimurai/http-proxy-middleware
 var proxyTable = config.dev.proxyTable
 
+const webpush = require('web-push')
+
+const publicVapidKey = 'BH6KXF52SefsDGaB4ao9lvfdqGgkiDo4uTVwFyjkIy58-MxwhdEW_1Dbr6qgAQqsdCl51HSvAqiqNcJ1HT2r-D8'
+const privateVapidKey = 'utFHLTZ4KtMDOhK1_aetCBryJLFVDLpHx7WEZMxS2f0'
+
+// Replace with your email
+webpush.setVapidDetails('mailto:littlewin.wang@sky-cloud.net', publicVapidKey, privateVapidKey)
+
 var app = express()
 var compiler = webpack(webpackConfig)
 
@@ -56,6 +64,19 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+app.use(require('body-parser').json())
+app.post('/subscribe', (req, res) => {
+  const subscription = req.body
+  res.status(201).json({})
+  const payload = JSON.stringify({ title: 'Zhihu_Daily' })
+
+  console.log(subscription)
+
+  webpush.sendNotification(subscription, payload).catch(error => {
+    console.error(error.stack)
+  })
+})
 
 module.exports = app.listen(port, function (err) {
   if (err) {
