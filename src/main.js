@@ -13,11 +13,6 @@ import 'common/stylus/base.styl'
 
 const publicVapidKey = 'BH6KXF52SefsDGaB4ao9lvfdqGgkiDo4uTVwFyjkIy58-MxwhdEW_1Dbr6qgAQqsdCl51HSvAqiqNcJ1HT2r-D8'
 
-// 注册service worker，service worker脚本文件为sw.js
-if ('serviceWorker' in navigator) {
-  run().catch(error => console.error(error))
-}
-
 function urlBase64ToUint8Array (base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4)
   const base64 = (base64String + padding)
@@ -34,26 +29,95 @@ function urlBase64ToUint8Array (base64String) {
   return outputArray
 }
 
-async function run () {
-  const registration = await navigator.serviceWorker.register('./sw.js')
-  console.log('Service Worker 注册成功')
+function askPermission () {
+  return new Promise(function (resolve, reject) {
+    /* eslint-disable */
+    var permissionResult = Notification.requestPermission(function (result) {
+      resolve(result)
+    })
 
-  const subscription = await registration.pushManager.subscribe({
-    userVisibleOnly: true,
-    // The `urlBase64ToUint8Array()` function is the same as in
-    // https://www.npmjs.com/package/web-push#using-vapid-key-for-applicationserverkey
-    applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
-  })
-
-  // eslint-disable-next-line no-undef
-  await fetch('/subscribe', {
-    method: 'POST',
-    body: JSON.stringify(subscription),
-    headers: {
-      'content-type': 'application/json'
+    if (permissionResult) {
+      permissionResult.then(resolve, reject)
+    }
+  }).then(function (permissionResult) {
+    if (permissionResult !== 'granted') {
+      throw new Error('We weren\'t granted permission.')
     }
   })
-  console.log('Web push subscribe完成')
+}
+
+// 注册service worker，service worker脚本文件为sw.js
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(function (registration) {
+    return Promise.all([
+      registration,
+      askPermission()
+    ])
+  }).then(function (result) {
+    var registration = result[0]
+
+    document.querySelector('#Notification').addEventListener('click', function () {
+      var title = 'Zhihu_Daily';
+      var options = {
+        body: 'You are welcome',
+        icon: '/img/newspaper-128.png',
+        actions: [{
+          action: 'viewSource',
+          title: '原网页'
+        }, {
+          action: 'contactMe',
+          title: '联系我'
+        }],
+        tag: 'zhihu-daily-notification',
+        renotify: true
+      }
+      registration.showNotification(title, options)
+    })
+
+    console.log('Service Worker 注册成功')
+
+    return registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      // The `urlBase64ToUint8Array()` function is the same as in
+      // https://www.npmjs.com/package/web-push#using-vapid-key-for-applicationserverkey
+      applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+    })
+  }).then(function (subscription) {
+    // eslint-disable-next-line no-undef
+    fetch('/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(subscription),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+  }).then(() => {
+    console.log('Web push subscribe完成')
+  })
+}
+
+// service worker 消息通信
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', function (e) {
+    var action = e.data
+    console.log(`receive post-message from sw, action is '${e.data}'`)
+    switch (action) {
+      case 'viewSource':
+        window.open(
+          'https://daily.zhihu.com/',
+          '_blank'
+        )
+        break
+      case 'contactMe':
+        window.open(
+          'mailto:someone@sample.com',
+          '_blank'
+        )
+        break
+      default:
+        break
+    }
+  })
 }
 
 Vue.use(VueRouter)

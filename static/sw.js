@@ -65,3 +65,39 @@ self.addEventListener('push', ev => {
     icon: 'https://daily.zhihu.com/favicon.ico'
   });
 })
+
+self.addEventListener('notificationclick', function (e) {
+  var action = e.action
+  console.log(`action tag: ${e.notification.tag}`, `action: ${action}`)
+
+  switch (action) {
+    case 'viewSource':
+      console.log('view source')
+      break
+    case 'contactMe':
+      console.log('contact me')
+      break
+    default:
+      console.log(`未处理的action: ${e.action}`)
+      action = 'default'
+      break
+  }
+  e.notification.close()
+
+  e.waitUntil(
+    // 获取所有clients
+    self.clients.matchAll().then(function (clients) {
+      if (!clients || clients.length === 0) {
+        // 当不存在client时，打开该网站
+        self.clients.openWindow && self.clients.openWindow('http://127.0.0.1:8080')
+        return
+      }
+      // 切换到该站点的tab
+      clients[0].focus && clients[0].focus()
+      clients.forEach(function (client) {
+        // 使用postMessage进行通信
+        client.postMessage(action)
+      })
+    })
+  )
+})

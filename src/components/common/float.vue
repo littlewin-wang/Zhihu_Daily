@@ -1,5 +1,6 @@
 <template>
   <div class="float">
+    <div class="gotop" id='Notification' title="Notification">提醒</div>
     <div class="gotop" id='gotop' title="返回顶部">
       <div class="arrow"></div>
       <div class="stick"></div>
@@ -29,12 +30,15 @@
   .float
     position: fixed
     left: 50%
-    top: 80%
+    top: 70%
     margin-left: 400px
     .gotop
       width: 38px
       height: 38px
+      line-height: 38px
+      text-align: center
       background-color: #F9F9F9
+      color: #aaa
       border-radius: 3px
       position: relative
       cursor: pointer

@@ -71,8 +71,6 @@ app.post('/subscribe', (req, res) => {
   res.status(201).json({})
   const payload = JSON.stringify({ title: 'Zhihu_Daily' })
 
-  console.log(subscription)
-
   webpush.sendNotification(subscription, payload).catch(error => {
     console.error(error.stack)
   })
