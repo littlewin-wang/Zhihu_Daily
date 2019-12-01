@@ -101,3 +101,24 @@ self.addEventListener('notificationclick', function (e) {
     })
   )
 })
+
+self.addEventListener('sync', function (e) {
+  console.log(`service worker需要进行后台同步，tag: ${e.tag}`)
+  var init = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+
+  if (e.tag === 'sample_sync') {
+    var request = new Request(`sync?name=Littlewin`, init)
+    e.waitUntil(
+      fetch(request).then(function (response) {
+        response.json().then(console.log.bind(console))
+        return response
+      })
+    );
+  }
+})

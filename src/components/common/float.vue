@@ -1,6 +1,7 @@
 <template>
   <div class="float">
     <div class="gotop" id='Notification' title="Notification">提醒</div>
+    <div class="gotop" id='Sync' title="Sync">同步</div>
     <div class="gotop" id='gotop' title="返回顶部">
       <div class="arrow"></div>
       <div class="stick"></div>

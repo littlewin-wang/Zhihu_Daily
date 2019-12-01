@@ -76,6 +76,14 @@ app.post('/subscribe', (req, res) => {
   })
 })
 
+app.get('/sync', (req, res) => {
+  console.log(`Hello ${req.query.name}, I have received your msg`)
+
+  res.status(200).json({
+    status: 0
+  })
+})
+
 module.exports = app.listen(port, function (err) {
   if (err) {
     console.log(err)

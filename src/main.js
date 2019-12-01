@@ -120,6 +120,21 @@ if ('serviceWorker' in navigator) {
   })
 }
 
+// Background Sync
+if ('serviceWorker' in navigator && 'SyncManager' in window) {
+  navigator.serviceWorker.ready.then(function (registration) {
+    var tag = "sample_sync"
+
+    document.getElementById('Sync').addEventListener('click', function () {
+      registration.sync.register(tag).then(function () {
+        console.log('后台同步已触发', tag)
+      }).catch(function (err) {
+        console.log('后台同步触发失败', err)
+      })
+    })
+  })
+}
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
